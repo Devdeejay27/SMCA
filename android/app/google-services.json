@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1017711078595",
+    "project_id": "smca-fe0e5",
+    "storage_bucket": "smca-fe0e5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017711078595:android:9907d3c0abe79f02b6c676",
+        "android_client_info": {
+          "package_name": "com.example.smca"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9_PdqhREsxiFGcWuJNn-8lHXROXTytr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
