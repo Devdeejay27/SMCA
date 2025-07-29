@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smca/auth/auth_service.dart';
 import 'package:smca/components/my_button.dart';
 import 'package:smca/components/my_textfield.dart';
 
@@ -8,10 +9,36 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
-  RegisterPage({super.key});
+
+  // tap to go to login page
+  final void Function()? onTap;
+  RegisterPage({
+    super.key,
+    required this.onTap,
+  });
 
   // register method
-  void register() {}
+  void register(BuildContext context) {
+    // get auth service
+    final _auth = AuthService();
+
+    // passwords match => create user
+    if (_passwordController.text == _confirmPasswordController.text) {
+      try {
+        _auth.signInWithEmailAndPassword(
+          _emailController.text,
+          _passwordController.text,
+        );
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +88,7 @@ class RegisterPage extends StatelessWidget {
             // login button
             MyButton(
               text: 'Register',
-              onTap: register,
+              onTap: () => register(context),
             ),
             const SizedBox(height: 25),
             // register now
@@ -73,11 +100,14 @@ class RegisterPage extends StatelessWidget {
                   style:
                       TextStyle(color: Theme.of(context).colorScheme.primary),
                 ),
-                Text(
-                  'Login here',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary),
+                GestureDetector(
+                  onTap: onTap,
+                  child: Text(
+                    'Login here',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.primary),
+                  ),
                 ),
               ],
             ),

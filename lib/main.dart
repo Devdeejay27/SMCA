@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:smca/auth/auth_gate.dart';
 import 'package:smca/firebase_options.dart';
-import 'package:smca/pages/login_page.dart';
-import 'package:smca/pages/register_page.dart';
 import 'package:smca/themes/light_mode.dart';
 
 void main() async {
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: const AuthGate(),
       theme: lightMode,
     );
   }
